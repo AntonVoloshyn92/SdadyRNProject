@@ -1,4 +1,4 @@
-import React, {Component, useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {View, StyleSheet, StatusBar, FlatList} from 'react-native';
 import {Articles, NewsItem} from '../interfaces/NewsInterface';
 import NewsCard from '../components/NewsCard';
@@ -20,17 +20,13 @@ function ItemScreen() {
 
   return (
     <View>
-      {/* <FlatList
+      <FlatList
         data={news}
         keyExtractor={(item, index) => 'key' + index}
         renderItem={({item}) => {
           return <NewsCard item={item} />;
         }}
-      /> */}
-
-      <View>
-        <NewsCard item={news[0]} />
-      </View>
+      />
     </View>
   );
 }

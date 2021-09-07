@@ -14,9 +14,7 @@ class NewsService {
       const response = await this.asios.get<NewsItem>(url);
 
       if (response.data) {
-        return {
-          response: response.data.articles,
-        };
+        return response.data.articles;
       }
     } catch (err) {
       throw Error();

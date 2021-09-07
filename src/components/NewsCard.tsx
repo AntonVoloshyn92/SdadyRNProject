@@ -4,8 +4,7 @@ import {Articles, NewsItem} from '../interfaces/NewsInterface';
 
 const {width, height} = Dimensions.get('window');
 
-const NewsCard = (item: Articles) => {
-  console.log('item', item);
+const NewsCard = ({item}) => {
   return (
     <View style={styles.cardView}>
       <Text style={styles.title}>{item.title}</Text>
@@ -31,7 +30,6 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    width: width,
     marginHorizontal: width * 0.05,
     marginVertical: width * 0.03,
     color: 'black',
@@ -39,14 +37,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   description: {
-    // width: width,
     marginHorizontal: width * 0.02,
     marginVertical: width * 0.05,
     color: 'gray',
     fontSize: 18,
   },
   image: {
-    width: width,
     height: height / 6,
     marginLeft: width * 0.05,
     marginRight: width * 0.05,

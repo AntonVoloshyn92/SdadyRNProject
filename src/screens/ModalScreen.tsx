@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Text, View, StyleSheet, Modal, Button, Alert } from "react-native";
+import * as React from 'react';
+import {Text, View, StyleSheet, Modal, Button, Alert} from 'react-native';
 
 function ModalScreen() {
   const [modalVisible, setModalVisible] = React.useState(false);
@@ -14,7 +14,7 @@ function ModalScreen() {
               <Button
                 title="Да"
                 onPress={() => {
-                  Alert.alert("Поздравляю, ты красавчик"),
+                  Alert.alert('Поздравляю, ты красавчик'),
                     setModalVisible(!modalVisible);
                 }}
               />
@@ -22,7 +22,7 @@ function ModalScreen() {
               <Button
                 title="Нет"
                 onPress={() => {
-                  // Alert.alert("Сожалею, ты не красавчик"),
+                  Alert.alert('Сожалею, ты не красавчик'),
                     setModalVisible(!modalVisible);
                 }}
               />
@@ -38,22 +38,22 @@ function ModalScreen() {
 const styles = StyleSheet.create({
   workSpace: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   modalParent: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   modalStyle: {
     margin: 20,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
+    alignItems: 'center',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -65,14 +65,14 @@ const styles = StyleSheet.create({
 
   textStyle: {
     fontSize: 24,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   button: {
     padding: 10,
     margin: 10,
-    flexDirection: "row",
+    flexDirection: 'row',
   },
 });
 

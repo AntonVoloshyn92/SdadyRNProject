@@ -51,11 +51,11 @@ export default function AudioScreen() {
   const scrollX = useRef(new Animated.Value(0)).current;
   const [songIndex, setSongIndex] = useState(0);
   const songSlider = useRef(null);
-  const [repeatMode, setRepeatMode] = useState(RepeatMode.Off);
+  const [repeatMode, setRepeatMode] = useState('off');
 
-  const [trackArtwork, setTrackArtwork] = useState<string>();
-  const [trackArtist, setTrackArtist] = useState<string>();
-  const [trackTitle, setTrackTitle] = useState<string>();
+  const [trackArtwork, setTrackArtwork] = useState();
+  const [trackArtist, setTrackArtist] = useState();
+  const [trackTitle, setTrackTitle] = useState();
 
   useTrackPlayerEvents([Event.PlaybackTrackChanged], async event => {
     if (event.type == Event.PlaybackTrackChanged && event.nextTrack != null) {
@@ -68,29 +68,29 @@ export default function AudioScreen() {
   });
 
   const repeatIcon = () => {
-    if (repeatMode == RepeatMode.Off) {
+    if (repeatMode == 'off') {
       return 'repeat-off';
     }
-    if (repeatMode == RepeatMode.Track) {
+    if (repeatMode == 'track') {
       return 'repeat-once';
     }
-    if (repeatMode == RepeatMode.Queue) {
+    if (repeatMode == 'repeat') {
       return 'repeat';
     }
   };
 
   const changeRepeatMode = () => {
-    if (repeatMode == RepeatMode.Off) {
+    if (repeatMode == 'off') {
       TrackPlayer.setRepeatMode(RepeatMode.Track);
-      setRepeatMode(RepeatMode.Track);
+      setRepeatMode('track');
     }
-    if (repeatMode == RepeatMode.Track) {
+    if (repeatMode == 'track') {
       TrackPlayer.setRepeatMode(RepeatMode.Queue);
-      setRepeatMode(RepeatMode.Queue);
+      setRepeatMode('repeat');
     }
-    if (repeatMode == RepeatMode.Queue) {
+    if (repeatMode == 'repeat') {
       TrackPlayer.setRepeatMode(RepeatMode.Off);
-      setRepeatMode(RepeatMode.Off);
+      setRepeatMode('off');
     }
   };
 
@@ -128,7 +128,7 @@ export default function AudioScreen() {
       <Animated.View
         style={{width: width, justifyContent: 'center', alignItems: 'center'}}>
         <View style={styles.artworkWrapper}>
-          <Image source={'${trackArtwork}'} style={styles.artworkImage} />
+          <Image source={`${trackArtwork}`} style={styles.artworkImage} />
         </View>
       </Animated.View>
     );
@@ -244,13 +244,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#222831',
   },
-
   maincontainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
-
   containerButton: {
     elevation: 10,
     marginBottom: 10,
@@ -259,7 +257,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'cornsilk',
     borderRadius: 15,
   },
-
   bottomContainer: {
     borderTopColor: '#393E46',
     borderTopWidth: 1,
@@ -272,7 +269,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '80%',
   },
-
   artworkWrapper: {
     width: 300,
     height: 340,
