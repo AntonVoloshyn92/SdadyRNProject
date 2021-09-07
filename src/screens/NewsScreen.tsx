@@ -1,20 +1,15 @@
 import React, {Component, useState, useEffect, useCallback} from 'react';
-import {View, StyleSheet, StatusBar} from 'react-native';
-import {Articles} from '../interfaces/NewsInterface';
+import {View, StyleSheet, StatusBar, FlatList} from 'react-native';
+import {Articles, NewsItem} from '../interfaces/NewsInterface';
 import NewsCard from '../components/NewsCard';
 import NewsService from '../services/NewsService';
 
 function ItemScreen() {
-  const [newsDate, setNewsDate] = useState<Articles[]>([]);
+  const [news, setNews] = useState<Articles[]>([]);
 
   const fetchNewsCallback = useCallback(async (queryString: string) => {
-    const response = await NewsService.getNewsDate(
-      queryString,
-      'us',
-      'business',
-    );
-
-    setNewsDate(response);
+    const response = await NewsService.getNewsDate('us', 'business');
+    setNews(response);
   }, []);
 
   const query = 'https://newsapi.org/v2/top-headlines';
@@ -25,7 +20,17 @@ function ItemScreen() {
 
   return (
     <View>
-      <NewsCard></NewsCard>
+      {/* <FlatList
+        data={news}
+        keyExtractor={(item, index) => 'key' + index}
+        renderItem={({item}) => {
+          return <NewsCard item={item} />;
+        }}
+      /> */}
+
+      <View>
+        <NewsCard item={news[0]} />
+      </View>
     </View>
   );
 }

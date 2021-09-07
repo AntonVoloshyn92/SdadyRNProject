@@ -123,7 +123,7 @@ export default function AudioScreen() {
     await TrackPlayer.skip(trackId);
   };
 
-  const renderSongs = ({index, item}) => {
+  const renderSongs = () => {
     return (
       <Animated.View
         style={{width: width, justifyContent: 'center', alignItems: 'center'}}>

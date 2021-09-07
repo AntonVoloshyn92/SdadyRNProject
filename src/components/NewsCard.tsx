@@ -1,26 +1,31 @@
-import React from "react";
-import { View, Text, Image, StyleSheet, Dimensions } from "react-native";
+import React from 'react';
+import {View, Text, Image, StyleSheet, Dimensions} from 'react-native';
+import {Articles, NewsItem} from '../interfaces/NewsInterface';
 
-const { width, height } = Dimensions.get("window");
+const {width, height} = Dimensions.get('window');
 
-const NewsCard = ({}) => {
+const NewsCard = (item: Articles) => {
+  console.log('item', item);
   return (
     <View style={styles.cardView}>
-      <Text style={styles.title}>Title</Text>
-      <Text style={styles.autor}>Autor</Text>
-      <Image style={styles.image} />
-      <Text style={styles.description}>Description</Text>
+      <Text style={styles.title}>{item.title}</Text>
+      <Text style={styles.autor}>{item.author}</Text>
+      <Image
+        style={styles.image}
+        source={item.urlToImage ? {uri: item.urlToImage} : null}
+      />
+      <Text style={styles.description}>{item.description}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   cardView: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
     margin: width * 0.03,
     borderRadius: width * 0.05,
-    shadowColor: "#000",
-    shadowOffset: { width: 0.5, height: 0.5 },
+    shadowColor: '#000',
+    shadowOffset: {width: 0.5, height: 0.5},
     shadowOpacity: 0.5,
     shadowRadius: 3,
   },
@@ -29,15 +34,15 @@ const styles = StyleSheet.create({
     width: width,
     marginHorizontal: width * 0.05,
     marginVertical: width * 0.03,
-    color: "black",
+    color: 'black',
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   description: {
     // width: width,
     marginHorizontal: width * 0.02,
     marginVertical: width * 0.05,
-    color: "gray",
+    color: 'gray',
     fontSize: 18,
   },
   image: {
@@ -51,7 +56,7 @@ const styles = StyleSheet.create({
     marginBottom: height * 0.0,
     marginHorizontal: width * 0.05,
     fontSize: 15,
-    color: "gray",
+    color: 'gray',
   },
 });
 

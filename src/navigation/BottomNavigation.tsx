@@ -2,7 +2,7 @@ import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import ModalScreen from '../screens/ModalScreen';
 import AudioScreen from '../screens/AudioScreen';
-import ItemScreen from '../screens/ItemScreen';
+import ItemScreen from '../screens/NewsScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 // import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -16,10 +16,10 @@ export default function BottomNavigation() {
         tabBarActiveTintColor: '#e91e63',
       }}>
       <Tab.Screen
-        name="Item Screen"
+        name="News Screen"
         component={ItemScreen}
         options={{
-          tabBarLabel: 'Item',
+          tabBarLabel: 'News',
           tabBarIcon: ({color, size}) => (
             <Ionicons name="ios-newspaper" color={color} size={size} />
           ),
