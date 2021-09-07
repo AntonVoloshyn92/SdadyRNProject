@@ -1,20 +1,30 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet, Dimensions} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Dimensions,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 import {Articles, NewsItem} from '../interfaces/NewsInterface';
 
 const {width, height} = Dimensions.get('window');
 
 const NewsCard = ({item}) => {
   return (
-    <View style={styles.cardView}>
-      <Text style={styles.title}>{item.title}</Text>
-      <Text style={styles.autor}>{item.author}</Text>
-      <Image
-        style={styles.image}
-        source={item.urlToImage ? {uri: item.urlToImage} : null}
-      />
-      <Text style={styles.description}>{item.description}</Text>
-    </View>
+    <TouchableOpacity onPress={() => Alert.alert(item.url)}>
+      <View style={styles.cardView}>
+        <Text style={styles.title}>{item.title}</Text>
+        <Text style={styles.autor}>{item.author}</Text>
+        <Image
+          style={styles.image}
+          source={item.urlToImage ? {uri: item.urlToImage} : null}
+        />
+        <Text style={styles.description}>{item.description}</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
