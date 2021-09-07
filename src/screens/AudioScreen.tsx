@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Text,
   View,
@@ -8,6 +8,7 @@ import {
   Dimensions,
   TouchableOpacity,
   FlatList,
+  Animated,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -22,6 +23,7 @@ import TrackPlayer, {
 } from 'react-native-track-player';
 import {Image} from 'react-native-elements/dist/image/Image';
 import Slider from '@react-native-community/slider';
+// import songs from '../model/date';
 
 const {width, height} = Dimensions.get('window');
 
@@ -50,35 +52,75 @@ const toddlePlayback = async (playbackState: State) => {
     }
   }
 };
+
 export default function AudioScreen() {
   const playbackState = usePlaybackState();
 
+  const scrollX = useRef(new Animated.Value(0)).current;
+  const [songIndex, setSongIndex] = useState(0);
+  const songSlider = useRef(null);
+
+  useEffect(() => {
+    scrollX.addListener(({value}) => {
+      const index = Math.round(value / width);
+      setSongIndex(index);
+    });
+
+    return () => {
+      scrollX.removeAllListeners();
+    };
+  });
+
+  const skipToNext = () => {
+    songSlider.current.scrollToOffset({
+      offset: (songIndex + 1) * width,
+    });
+  };
+
+  const skipToPrevius = () => {
+    songSlider.current.scrollToOffset({
+      offset: (songIndex - 1) * width,
+    });
+  };
+
   const renderSongs = ({index, item}) => {
     return (
-      <View style={styles.artworkWrapper}>
-        <Image
-          source={require('../assets/woman.jpg')}
-          style={styles.artworkImage}
-        />
-      </View>
+      <Animated.View
+        style={{width: width, justifyContent: 'center', alignItems: 'center'}}>
+        <View style={styles.artworkWrapper}>
+          <Image source={item.image} style={styles.artworkImage} />
+        </View>
+      </Animated.View>
     );
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.maincontainer}>
-        <FlatList
+        <Animated.FlatList
+          ref={songSlider}
           data={songs}
           renderItem={renderSongs}
-          keyExtractor={item => item.id}
+          // keyExtractor={item => item.id}
           horizontal
           pagingEnabled
           showsHorizontalScrollIndicator={false}
           scrollEventThrottle={16}
+          onScroll={Animated.event(
+            [
+              {
+                nativeEvent: {
+                  contentOffset: {x: scrollX},
+                },
+              },
+            ],
+            {useNativeDriver: true},
+          )}
         />
+
         <View>
-          <Text style={styles.songTitle}>Song Title</Text>
-          <Text style={styles.songArtist}>Song Artist Name</Text>
+          <Text style={styles.songTitle}>{songs[songIndex].title}</Text>
+          <Text style={styles.songArtist}>{songs[songIndex].artist}</Text>
         </View>
         <Slider
           style={styles.progressContainer}
@@ -95,7 +137,7 @@ export default function AudioScreen() {
           <Text style={styles.progressLabelTxt}>3:55</Text>
         </View>
         <View style={styles.musicControlls}>
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity onPress={skipToPrevius}>
             <Ionicons
               name="play-skip-back-outline"
               size={35}
@@ -106,7 +148,7 @@ export default function AudioScreen() {
           <TouchableOpacity onPress={() => {}}>
             <Ionicons name="ios-pause-circle" size={75} color="#FFD369" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity onPress={skipToNext}>
             <Ionicons
               name="play-skip-forward-outline"
               size={35}
@@ -224,3 +266,24 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
 });
+
+const songs = [
+  {
+    title: 'Abilene',
+    artist: 'Gibson, D',
+    image: require('../assets/woman.jpg'),
+    id: 1,
+  },
+  {
+    title: "Ain't Talkin' 'Bout Love",
+    artist: 'Harlan',
+    image: require('../assets/image.jpeg'),
+    id: 2,
+  },
+  {
+    title: "Ain't That Just Like A Woman",
+    artist: 'Rodney',
+    image: require('../assets/hands.png'),
+    id: 3,
+  },
+];
