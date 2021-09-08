@@ -2,8 +2,8 @@ import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import ModalScreen from '../screens/ModalScreen';
 import AudioScreen from '../screens/AudioScreen';
-import ItemScreen from '../screens/NewsScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import StackNavigationNews from './NavigationNews';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,8 +16,9 @@ export default function BottomNavigation() {
       }}>
       <Tab.Screen
         name="News Screen"
-        component={ItemScreen}
+        children={StackNavigationNews}
         options={{
+          headerShown: false,
           tabBarLabel: 'News',
           tabBarIcon: ({color, size}) => (
             <Ionicons name="ios-newspaper" color={color} size={size} />

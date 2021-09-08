@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback} from 'react';
-import {View, StyleSheet, StatusBar, FlatList} from 'react-native';
+import {View, FlatList} from 'react-native';
 import {Articles} from '../interfaces/NewsInterface';
 import NewsCard from '../components/NewsCard';
 import NewsService from '../services/NewsService';
@@ -37,23 +37,5 @@ function ItemScreen({navigation}) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
-  },
-  item: {
-    backgroundColor: '#c8ccc9',
-    elevation: 5,
-    borderRadius: 15,
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
-  title: {
-    fontSize: 32,
-  },
-});
 
 export default ItemScreen;
