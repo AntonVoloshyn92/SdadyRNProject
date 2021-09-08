@@ -3,18 +3,12 @@ import {
   Text,
   View,
   StyleSheet,
-  Button,
   SafeAreaView,
   Dimensions,
   TouchableOpacity,
-  FlatList,
   Animated,
 } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
 import TrackPlayer, {
-  Capability,
   Event,
   RepeatMode,
   State,
@@ -22,11 +16,13 @@ import TrackPlayer, {
   useProgress,
   useTrackPlayerEvents,
 } from 'react-native-track-player';
+
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Image} from 'react-native-elements/dist/image/Image';
 import Slider from '@react-native-community/slider';
-// import songs from '../model/date';
 
-const {width, height} = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
 const setupPlayer = async () => {
   await TrackPlayer.setupPlayer();
@@ -36,7 +32,7 @@ const setupPlayer = async () => {
 const togglePlayback = async (playbackState: State) => {
   const currentTrack = await TrackPlayer.getCurrentTrack();
   if (currentTrack != null) {
-    if (playbackState == State.Paused) {
+    if (playbackState === State.Paused) {
       await TrackPlayer.play();
     } else {
       await TrackPlayer.pause();
@@ -58,7 +54,7 @@ export default function AudioScreen() {
   const [trackTitle, setTrackTitle] = useState();
 
   useTrackPlayerEvents([Event.PlaybackTrackChanged], async event => {
-    if (event.type == Event.PlaybackTrackChanged && event.nextTrack != null) {
+    if (event.type === Event.PlaybackTrackChanged && event.nextTrack != null) {
       const track = await TrackPlayer.getTrack(event.nextTrack);
       const {title, artwork, artist} = track;
       setTrackArtist(artist);
@@ -68,27 +64,27 @@ export default function AudioScreen() {
   });
 
   const repeatIcon = () => {
-    if (repeatMode == 'off') {
+    if (repeatMode === 'off') {
       return 'repeat-off';
     }
-    if (repeatMode == 'track') {
+    if (repeatMode === 'track') {
       return 'repeat-once';
     }
-    if (repeatMode == 'repeat') {
+    if (repeatMode === 'repeat') {
       return 'repeat';
     }
   };
 
   const changeRepeatMode = () => {
-    if (repeatMode == 'off') {
+    if (repeatMode === 'off') {
       TrackPlayer.setRepeatMode(RepeatMode.Track);
       setRepeatMode('track');
     }
-    if (repeatMode == 'track') {
+    if (repeatMode === 'track') {
       TrackPlayer.setRepeatMode(RepeatMode.Queue);
       setRepeatMode('repeat');
     }
-    if (repeatMode == 'repeat') {
+    if (repeatMode === 'repeat') {
       TrackPlayer.setRepeatMode(RepeatMode.Off);
       setRepeatMode('off');
     }
@@ -287,7 +283,6 @@ const styles = StyleSheet.create({
     height: '100%',
     borderRadius: 15,
   },
-
   songTitle: {
     fontSize: 18,
     fontWeight: '600',
@@ -314,7 +309,6 @@ const styles = StyleSheet.create({
   progressLabelTxt: {
     color: '#fff',
   },
-
   musicControlls: {
     flexDirection: 'row',
     justifyContent: 'space-between',

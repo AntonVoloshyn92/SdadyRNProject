@@ -6,15 +6,17 @@ import {
   StyleSheet,
   Dimensions,
   TouchableOpacity,
-  Alert,
 } from 'react-native';
-import {Articles, NewsItem} from '../interfaces/NewsInterface';
+import {NewsCardProps} from '../interfaces/NewsCardProps';
 
 const {width, height} = Dimensions.get('window');
 
-const NewsCard = ({item}) => {
+const NewsCard: React.FC<NewsCardProps> = ({item, onClick}) => {
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('Details Screen')}>
+    <TouchableOpacity
+      onPress={() => {
+        onClick(item.url);
+      }}>
       <View style={styles.cardView}>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.autor}>{item.author}</Text>

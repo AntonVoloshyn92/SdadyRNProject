@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-
   modalParent: {
     flex: 1,
     justifyContent: 'center',
@@ -62,13 +61,11 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-
   textStyle: {
     fontSize: 24,
     justifyContent: 'center',
     alignItems: 'center',
   },
-
   button: {
     padding: 10,
     margin: 10,

@@ -1,10 +1,10 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import {View, StyleSheet, StatusBar, FlatList} from 'react-native';
-import {Articles, NewsItem} from '../interfaces/NewsInterface';
+import {Articles} from '../interfaces/NewsInterface';
 import NewsCard from '../components/NewsCard';
 import NewsService from '../services/NewsService';
 
-function ItemScreen() {
+function ItemScreen({navigation}) {
   const [news, setNews] = useState<Articles[]>([]);
 
   const fetchNewsCallback = useCallback(async (queryString: string) => {
@@ -24,7 +24,14 @@ function ItemScreen() {
         data={news}
         keyExtractor={(item, index) => 'key' + index}
         renderItem={({item}) => {
-          return <NewsCard item={item} />;
+          return (
+            <NewsCard
+              item={item}
+              onClick={() => {
+                navigation.navigate('NewsDetailsScreen');
+              }}
+            />
+          );
         }}
       />
     </View>

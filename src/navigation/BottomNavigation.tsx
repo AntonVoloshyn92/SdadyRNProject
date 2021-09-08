@@ -4,7 +4,6 @@ import ModalScreen from '../screens/ModalScreen';
 import AudioScreen from '../screens/AudioScreen';
 import ItemScreen from '../screens/NewsScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-// import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tab = createBottomTabNavigator();
 
