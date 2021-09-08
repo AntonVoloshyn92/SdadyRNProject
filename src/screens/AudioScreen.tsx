@@ -128,7 +128,7 @@ export default function AudioScreen() {
       <Animated.View
         style={{width: width, justifyContent: 'center', alignItems: 'center'}}>
         <View style={styles.artworkWrapper}>
-          <Image source={`${trackArtwork}`} style={styles.artworkImage} />
+          <Image source={trackArtwork} style={styles.artworkImage} />
         </View>
       </Animated.View>
     );
@@ -327,22 +327,22 @@ const songs = [
   {
     title: 'Dzharahov',
     artist: 'Я в моментке',
-    image: require('../assets/woman.jpg'),
-    url: require('../assets/dzharahov_-_ya-v-momente.mp3'),
+    image: require('../assets/image/woman.jpg'),
+    url: require('../assets/songs/dzharahov_-_ya-v-momente.mp3'),
     id: 1,
   },
   {
     title: 'Federiko Fellini',
     artist: 'Galibri Mavik',
-    image: require('../assets/image.jpeg'),
-    url: require('../assets/galibri-mavik_-_federiko-fellini.mp3'),
+    image: require('../assets/image/image.jpeg'),
+    url: require('../assets/songs/galibri-mavik_-_federiko-fellini.mp3'),
     id: 2,
   },
   {
     title: "Ain't That Just Like A Woman",
     artist: 'Rodney',
-    image: require('../assets/hands.png'),
-    url: require('../assets/Hello.mp3'),
+    image: require('../assets/image/hands.png'),
+    url: require('../assets/songs/Hello.mp3'),
     id: 3,
   },
 ];

@@ -14,7 +14,7 @@ const {width, height} = Dimensions.get('window');
 
 const NewsCard = ({item}) => {
   return (
-    <TouchableOpacity onPress={() => Alert.alert(item.url)}>
+    <TouchableOpacity onPress={() => navigation.navigate('Details Screen')}>
       <View style={styles.cardView}>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.autor}>{item.author}</Text>
