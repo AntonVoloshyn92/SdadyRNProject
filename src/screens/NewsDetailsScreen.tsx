@@ -1,23 +1,34 @@
 import {RouteProp, useRoute} from '@react-navigation/native';
 import React from 'react';
-import {View, Text} from 'react-native';
-import {Articles} from '../interfaces/NewsInterface';
-import {NewsStackParamList} from './NewsScreen';
+import {View, Text, StyleSheet} from 'react-native';
+import {NewsStackParamList} from '../navigation/navigation.types';
 
 function NewsDetailsScreen() {
   const route = useRoute<RouteProp<NewsStackParamList, 'NewsDetailsScreen'>>();
-  const {childId} = route.params;
+  const {article} = route.params;
 
   console.log('====================================');
-  console.log(route);
+  console.log(article);
   console.log('====================================');
-  console.log();
-  console.log('====================================');
+
   return (
-    <View>
-      <Text>{childId}</Text>
+    <View style={styles.mainContainer}>
+      <Text style={styles.textTitle}>{article.title}</Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  mainContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  textTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    paddingTop: 20,
+  },
+});
 
 export default NewsDetailsScreen;

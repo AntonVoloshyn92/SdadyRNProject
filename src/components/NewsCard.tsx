@@ -11,20 +11,20 @@ import {NewsCardProps} from '../interfaces/NewsCardProps';
 
 const {width, height} = Dimensions.get('window');
 
-const NewsCard: React.FC<NewsCardProps> = ({item, onClick}) => {
+const NewsCard: React.FC<NewsCardProps> = ({article, onClick}) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        onClick(item);
+        onClick(article.url);
       }}>
       <View style={styles.cardView}>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.autor}>{item.author}</Text>
+        <Text style={styles.title}>{article.title}</Text>
+        <Text style={styles.autor}>{article.author}</Text>
         <Image
           style={styles.image}
-          source={item.urlToImage ? {uri: item.urlToImage} : null}
+          source={article.urlToImage ? {uri: article.urlToImage} : null}
         />
-        <Text style={styles.description}>{item.description}</Text>
+        <Text style={styles.description}>{article.description}</Text>
       </View>
     </TouchableOpacity>
   );
