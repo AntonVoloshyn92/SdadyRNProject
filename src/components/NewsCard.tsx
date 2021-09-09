@@ -15,7 +15,7 @@ const NewsCard: React.FC<NewsCardProps> = ({item, onClick}) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        onClick(item.url);
+        onClick(item);
       }}>
       <View style={styles.cardView}>
         <Text style={styles.title}>{item.title}</Text>

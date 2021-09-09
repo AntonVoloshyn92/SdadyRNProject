@@ -1,6 +1,6 @@
 import {Articles} from './NewsInterface';
 
-export interface StockListItemProps {
+export interface NewsCardProps {
   portfolioItem: Articles;
-  onClick: (stock: Articles) => void;
+  onClick: (articleLink: string) => void;
 }

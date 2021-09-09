@@ -3,6 +3,12 @@ import {View, FlatList} from 'react-native';
 import {Articles} from '../interfaces/NewsInterface';
 import NewsCard from '../components/NewsCard';
 import NewsService from '../services/NewsService';
+import {useRoute} from '@react-navigation/native';
+import {RouteProp} from '@react-navigation/native';
+
+export type NewsStackParamList = {
+  NewsItem: {childId: Articles};
+};
 
 function ItemScreen({navigation}) {
   const [news, setNews] = useState<Articles[]>([]);
@@ -28,7 +34,7 @@ function ItemScreen({navigation}) {
             <NewsCard
               item={item}
               onClick={() => {
-                navigation.navigate('NewsDetailsScreen');
+                navigation.navigate('NewsDetailsScreen', {news: item});
               }}
             />
           );
