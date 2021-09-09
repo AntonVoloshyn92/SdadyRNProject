@@ -1,12 +1,13 @@
 import {RouteProp, useRoute} from '@react-navigation/native';
 import React from 'react';
 import {View, Text} from 'react-native';
-import {Articles} from '../interfaces/NewsInterface';
-import {NewsStackParamList} from './NewsScreen';
+import {NewsStackParamList} from '../navigation/navigation.types';
 
 function NewsDetailsScreen() {
   const route = useRoute<RouteProp<NewsStackParamList, 'NewsDetailsScreen'>>();
-  const {childId} = route.params;
+  const {article} = route.params;
+
+  console.log('ARTICLE', article);
 
   console.log('====================================');
   console.log(route);
@@ -15,7 +16,7 @@ function NewsDetailsScreen() {
   console.log('====================================');
   return (
     <View>
-      <Text>{childId}</Text>
+      <Text>{article}</Text>
     </View>
   );
 }

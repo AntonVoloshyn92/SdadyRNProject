@@ -3,15 +3,18 @@ import {View, FlatList} from 'react-native';
 import {Articles} from '../interfaces/NewsInterface';
 import NewsCard from '../components/NewsCard';
 import NewsService from '../services/NewsService';
-import {useRoute} from '@react-navigation/native';
+import {useRoute, useNavigation} from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import {RouteProp} from '@react-navigation/native';
+import { NewsStackParamList } from '../navigation/navigation.types';
 
-export type NewsStackParamList = {
-  NewsItem: {childId: Articles};
-};
+interface NewsScreenProps {}
 
-function ItemScreen({navigation}) {
+const NewsScreen: React.FC<NewsScreenProps> = () => {
   const [news, setNews] = useState<Articles[]>([]);
+
+  const navigation =
+    useNavigation<StackNavigationProp<NewsStackParamList, 'NewsScreen'>>();
 
   const fetchNewsCallback = useCallback(async (queryString: string) => {
     const response = await NewsService.getNewsDate('us', 'business');
@@ -32,9 +35,11 @@ function ItemScreen({navigation}) {
         renderItem={({item}) => {
           return (
             <NewsCard
-              item={item}
-              onClick={() => {
-                navigation.navigate('NewsDetailsScreen', {news: item});
+              article={item}
+              onClick={url => {
+                navigation.navigate('NewsDetailsScreen', {
+                  article: url,
+                });
               }}
             />
           );
@@ -42,6 +47,6 @@ function ItemScreen({navigation}) {
       />
     </View>
   );
-}
+};
 
-export default ItemScreen;
+export default NewsScreen;
