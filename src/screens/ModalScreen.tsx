@@ -1,28 +1,30 @@
 import * as React from 'react';
 import {Text, View, StyleSheet, Modal, Button, Alert} from 'react-native';
+import {useTranslation} from 'react-i18next';
 
 function ModalScreen() {
   const [modalVisible, setModalVisible] = React.useState(false);
+  const {t} = useTranslation();
 
   return (
     <View style={styles.workSpace}>
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <View style={styles.modalParent}>
           <View style={styles.modalStyle}>
-            <Text style={styles.textStyle}>Ты красавчик?</Text>
+            <Text style={styles.textStyle}>{t('common:question')}</Text>
             <View style={styles.button}>
               <Button
-                title="Да"
+                title={t('common:yes')}
                 onPress={() => {
-                  Alert.alert('Поздравляю, ты красавчик'),
+                  Alert.alert(t('common:congratulations')),
                     setModalVisible(!modalVisible);
                 }}
               />
 
               <Button
-                title="Нет"
+                title={t('common:no')}
                 onPress={() => {
-                  Alert.alert('Сожалею, ты не красавчик'),
+                  Alert.alert(t('common:regret')),
                     setModalVisible(!modalVisible);
                 }}
               />
@@ -30,7 +32,7 @@ function ModalScreen() {
           </View>
         </View>
       </Modal>
-      <Button title="click me" onPress={() => setModalVisible(true)} />
+      <Button title={t('common:click')} onPress={() => setModalVisible(true)} />
     </View>
   );
 }

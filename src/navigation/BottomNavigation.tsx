@@ -23,7 +23,7 @@ export default function BottomNavigation() {
         children={StackNavigationNews}
         options={{
           headerShown: false,
-          tabBarLabel: t('Navigate:news'),
+          tabBarLabel: t('navigation:news'),
           tabBarIcon: ({color, size}) => (
             <Ionicons name="ios-newspaper" color={color} size={size} />
           ),
@@ -33,7 +33,7 @@ export default function BottomNavigation() {
         name="Modal"
         component={ModalScreen}
         options={{
-          tabBarLabel: t('Navigate:modal'),
+          tabBarLabel: t('navigation:modal'),
           tabBarIcon: ({color, size}) => (
             <Ionicons name="ios-notifications" color={color} size={size} />
           ),
@@ -43,7 +43,7 @@ export default function BottomNavigation() {
         name="Audio"
         component={AudioScreen}
         options={{
-          tabBarLabel: t('Navigate:music'),
+          tabBarLabel: t('navigation:music'),
           tabBarIcon: ({color, size}) => (
             <Ionicons name="ios-musical-notes" color={color} size={size} />
           ),
@@ -53,7 +53,7 @@ export default function BottomNavigation() {
         name="Setting"
         component={SettingScreen}
         options={{
-          tabBarLabel: t('Navigate:settings'),
+          tabBarLabel: t('navigation:setting'),
           tabBarIcon: ({color, size}) => (
             <Ionicons name="ios-settings" color={color} size={size} />
           ),
