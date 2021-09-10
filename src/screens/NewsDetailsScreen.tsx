@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   },
   textAutor: {
     fontSize: 10,
-    marginRight: 10,
+    marginHorizontal: 10,
   },
   textNews: {
     fontSize: 14,

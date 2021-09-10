@@ -5,7 +5,7 @@ import {useTranslation} from 'react-i18next';
 
 const LANGUAGES = [
   {code: 'en', label: 'English'},
-  {code: 'fr', label: 'Français'},
+  {code: 'ua', label: 'Українська'},
 ];
 
 const Selector = () => {

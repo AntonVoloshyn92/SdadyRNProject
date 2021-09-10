@@ -1,10 +1,12 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
+import Selector from '../components/LanguageSelector';
+
 function SettingScreen() {
   return (
     <View style={styles.main}>
-      <Text>Setting</Text>
+      <Selector />
     </View>
   );
 }
@@ -12,8 +14,7 @@ function SettingScreen() {
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: '#fff',
   },
 });
 

@@ -5,10 +5,13 @@ import AudioScreen from '../screens/AudioScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import StackNavigationNews from './NavigationNews';
 import SettingScreen from '../screens/SettingScreen';
+import {useTranslation} from 'react-i18next';
 
 const Tab = createBottomTabNavigator();
 
 export default function BottomNavigation() {
+  const {t} = useTranslation();
+
   return (
     <Tab.Navigator
       initialRouteName="Item Screen"
@@ -20,7 +23,7 @@ export default function BottomNavigation() {
         children={StackNavigationNews}
         options={{
           headerShown: false,
-          tabBarLabel: 'News',
+          tabBarLabel: t('Navigate:news'),
           tabBarIcon: ({color, size}) => (
             <Ionicons name="ios-newspaper" color={color} size={size} />
           ),
@@ -30,7 +33,7 @@ export default function BottomNavigation() {
         name="Modal"
         component={ModalScreen}
         options={{
-          tabBarLabel: 'Modal',
+          tabBarLabel: t('Navigate:modal'),
           tabBarIcon: ({color, size}) => (
             <Ionicons name="ios-notifications" color={color} size={size} />
           ),
@@ -40,7 +43,7 @@ export default function BottomNavigation() {
         name="Audio"
         component={AudioScreen}
         options={{
-          tabBarLabel: 'Music',
+          tabBarLabel: t('Navigate:music'),
           tabBarIcon: ({color, size}) => (
             <Ionicons name="ios-musical-notes" color={color} size={size} />
           ),
@@ -50,7 +53,7 @@ export default function BottomNavigation() {
         name="Setting"
         component={SettingScreen}
         options={{
-          tabBarLabel: 'Setting',
+          tabBarLabel: t('Navigate:settings'),
           tabBarIcon: ({color, size}) => (
             <Ionicons name="ios-settings" color={color} size={size} />
           ),
