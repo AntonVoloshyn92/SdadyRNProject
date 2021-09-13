@@ -3,7 +3,6 @@ import React from 'react';
 import {useCallback} from 'react';
 import {Alert} from 'react-native';
 import {View, Text, StyleSheet, Linking, Button} from 'react-native';
-import {Image} from 'react-native-elements';
 import {NewsStackParamList} from '../navigation/navigation.types';
 
 function NewsDetailsScreen() {

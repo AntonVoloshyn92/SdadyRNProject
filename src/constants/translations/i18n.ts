@@ -1,7 +1,7 @@
 import i18next, {i18n as i18nInstance} from 'i18next';
 import {initReactI18next} from 'react-i18next';
 import {languages} from './i18n.constants';
-import {ua, en} from './i18n.translations';
+import {ua, en, rus} from './i18n.translations';
 
 const createI18n = (language: string): i18nInstance => {
   const i18n = i18next.createInstance().use(initReactI18next);
@@ -12,6 +12,7 @@ const createI18n = (language: string): i18nInstance => {
     resources: {
       [languages.ua]: ua,
       [languages.en]: en,
+      [languages.rus]: rus,
     },
   });
 

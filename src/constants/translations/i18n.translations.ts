@@ -43,3 +43,25 @@ export const ua = {
     languageSelector: 'Вибір мови',
   },
 };
+
+export const rus = {
+  [namespaces.navigation]: {
+    news: 'Новости',
+    modal: 'Модальный',
+    music: 'Музыка',
+    setting: 'Настройка',
+  },
+  [namespaces.common]: {
+    question: 'Ты красив?',
+    click: 'Щелкните меня',
+    yes: 'Да',
+    no: 'Нет',
+    congratulations: 'Поздравляю, ты красавчик',
+    regret: 'Сожалею, ты не красавец',
+    botton: {
+      yes: 'Так!!!',
+      no: 'Ні!!!',
+    },
+    languageSelector: 'Выбор языка',
+  },
+};

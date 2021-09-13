@@ -6,4 +6,5 @@ export const namespaces = {
 export const languages = {
   ua: 'ua',
   en: 'en',
+  rus: 'rus',
 };
