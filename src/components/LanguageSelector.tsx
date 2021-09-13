@@ -14,9 +14,6 @@ const Selector = () => {
   const selectedLanguageCode = i18n.language;
 
   const setLanguage = code => {
-    console.log('====================================');
-    console.log(code);
-    console.log('====================================');
     return i18n.changeLanguage(code);
   };
 

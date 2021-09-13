@@ -14,11 +14,10 @@ export const en = {
     no: 'No',
     congratulations: 'Congratulations, you are handsome',
     regret: 'Im sorry you are not handsome',
-    botton: {
-      yes: 'yes!!!',
-      no: 'no!!!',
-    },
     languageSelector: 'Language Selector ',
+    themeLight: 'Light',
+    themeDark: 'Dark',
+    themeSelector: 'Install theme',
   },
 };
 
@@ -36,11 +35,10 @@ export const ua = {
     no: 'Ні',
     congratulations: 'Вітаю, ти красавчик',
     regret: 'Шкодую, ти не красень',
-    botton: {
-      yes: 'Так!!!',
-      no: 'Ні!!!',
-    },
     languageSelector: 'Вибір мови',
+    themeLight: 'Світла',
+    themeDark: 'Темна',
+    themeSelector: 'Встановити тему',
   },
 };
 
@@ -58,10 +56,9 @@ export const rus = {
     no: 'Нет',
     congratulations: 'Поздравляю, ты красавчик',
     regret: 'Сожалею, ты не красавец',
-    botton: {
-      yes: 'Так!!!',
-      no: 'Ні!!!',
-    },
     languageSelector: 'Выбор языка',
+    themeLight: 'Cветлая',
+    themeDark: 'Темная',
+    themeSelector: 'Установить тему',
   },
 };
