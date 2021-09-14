@@ -4,12 +4,11 @@ import RadioButtonRN from 'radio-buttons-react-native';
 import Selector from '../components/LanguageSelector';
 import {useTranslation} from 'react-i18next';
 import {Text} from 'react-native-elements';
-import {ThemeState} from '../constants/enums/ThemeState';
-import {changeTheme} from '../redux/actions/changeThemeAction';
+import {ThemeType} from '../constants/enums/ThemeType';
 
 function SettingScreen() {
   const {t} = useTranslation();
-  const [theme, setTheme] = useState<ThemeState>();
+  const [theme, setTheme] = useState<ThemeType>();
 
   const data = [
     {
@@ -23,7 +22,7 @@ function SettingScreen() {
   ];
 
   const setBackColor = () => {
-    if (theme === ThemeState.LIGHT) {
+    if (theme === ThemeType.LIGHT) {
       return styles.main;
     } else {
       return styles.mainDark;
@@ -31,7 +30,7 @@ function SettingScreen() {
   };
 
   const setBackText = () => {
-    if (theme === ThemeState.LIGHT) {
+    if (theme === ThemeType.LIGHT) {
       return styles.textStyle;
     } else {
       return styles.textStyleDark;
@@ -49,12 +48,12 @@ function SettingScreen() {
             console.log(e.label);
 
             if (e.id === 1) {
-              setTheme(ThemeState.LIGHT);
-              changeTheme(ThemeState.LIGHT);
+              setTheme(ThemeType.LIGHT);
+
               //set Redux action here
             } else {
-              setTheme(ThemeState.DARK);
-              changeTheme(ThemeState.DARK);
+              setTheme(ThemeType.DARK);
+
               //set Redux action here
             }
           }}
