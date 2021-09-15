@@ -13,7 +13,7 @@ const Selector = () => {
   const {t, i18n} = useTranslation();
   const selectedLanguageCode = i18n.language;
 
-  const setLanguage = code => {
+  const setLanguage = (code: string) => {
     return i18n.changeLanguage(code);
   };
 

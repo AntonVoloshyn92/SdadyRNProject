@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import RadioButtonRN from 'radio-buttons-react-native';
 import Selector from '../components/LanguageSelector';
 import {useTranslation} from 'react-i18next';
 import {Text} from 'react-native-elements';
-import {ThemeType} from '../constants/enums/ThemeType';
 import {isWhiteThemeSelector} from '../store/app/app.selector';
 import {useDispatch, connect} from 'react-redux';
 import {RootState} from '../store';
@@ -38,10 +37,8 @@ const SettingScreen: React.FC<ReturnType<typeof mapStateToProps>> = ({
           selectedBtn={(e: {id: number}) => {
             if (e.id === 1) {
               dispatch(setIsWhiteThemaThunk(true));
-              //set Redux action here
             } else {
               dispatch(setIsWhiteThemaThunk(false));
-              //set Redux action here
             }
           }}
         />

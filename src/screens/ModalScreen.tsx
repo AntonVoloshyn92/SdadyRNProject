@@ -1,13 +1,19 @@
 import * as React from 'react';
 import {Text, View, StyleSheet, Modal, Button, Alert} from 'react-native';
 import {useTranslation} from 'react-i18next';
+import {connect} from 'react-redux';
+import {RootState} from '../store';
+import {isWhiteThemeSelector} from '../store/app/app.selector';
 
-function ModalScreen() {
+const ModalScreen: React.FC<ReturnType<typeof mapStateToProps>> = ({
+  isWhiteTheme,
+}) => {
   const [modalVisible, setModalVisible] = React.useState(false);
   const {t} = useTranslation();
 
   return (
-    <View style={styles.workSpace}>
+    <View
+      style={[styles.workSpace, isWhiteTheme ? styles.main : styles.mainDark]}>
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <View style={styles.modalParent}>
           <View style={styles.modalStyle}>
@@ -16,16 +22,16 @@ function ModalScreen() {
               <Button
                 title={t('common:yes')}
                 onPress={() => {
-                  Alert.alert(t('common:congratulations')),
-                    setModalVisible(!modalVisible);
+                  Alert.alert(t('common:congratulations'));
+                  setModalVisible(!modalVisible);
                 }}
               />
 
               <Button
                 title={t('common:no')}
                 onPress={() => {
-                  Alert.alert(t('common:regret')),
-                    setModalVisible(!modalVisible);
+                  Alert.alert(t('common:regret'));
+                  setModalVisible(!modalVisible);
                 }}
               />
             </View>
@@ -35,9 +41,25 @@ function ModalScreen() {
       <Button title={t('common:click')} onPress={() => setModalVisible(true)} />
     </View>
   );
-}
+};
+
+const mapStateToProps = (state: RootState) => ({
+  isWhiteTheme: isWhiteThemeSelector(state),
+});
+
+export default connect(mapStateToProps)(ModalScreen);
 
 const styles = StyleSheet.create({
+  main: {
+    flex: 1,
+    backgroundColor: '#fff',
+    padding: 20,
+  },
+  mainDark: {
+    flex: 1,
+    backgroundColor: '#6e798a',
+    padding: 20,
+  },
   workSpace: {
     flex: 1,
     justifyContent: 'center',
@@ -74,5 +96,3 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
 });
-
-export default ModalScreen;
