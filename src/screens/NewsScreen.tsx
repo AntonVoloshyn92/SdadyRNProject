@@ -6,11 +6,20 @@ import NewsService from '../services/NewsService';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {NewsStackParamList} from '../navigation/navigation.types';
+import {AppState} from '../store/app.types';
 
 interface NewsScreenProps {}
 
 const NewsScreen: React.FC<NewsScreenProps> = () => {
   const [news, setNews] = useState<Articles[]>([]);
+
+  const mapThema = (state: AppState) => ({
+    isWhiteTheme: state.isWhiteTheme,
+  });
+
+  console.log('====================================');
+  console.log('mapThema', mapThema);
+  console.log('====================================');
 
   const navigation =
     useNavigation<StackNavigationProp<NewsStackParamList, 'NewsScreen'>>();
