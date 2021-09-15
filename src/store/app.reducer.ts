@@ -7,6 +7,9 @@ const initState: AppState = {
 export default (state = initState, action: AppActionTypes): AppState => {
   switch (action.type) {
     case SET_IS_WHITE_THEME:
+      console.log('====================================');
+      console.log(state, action.payload);
+      console.log('====================================');
       return {...state, isWhiteTheme: action.payload};
     default:
       return state;

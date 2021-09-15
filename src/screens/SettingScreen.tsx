@@ -5,6 +5,7 @@ import Selector from '../components/LanguageSelector';
 import {useTranslation} from 'react-i18next';
 import {Text} from 'react-native-elements';
 import {ThemeType} from '../constants/enums/ThemeType';
+import {setIsWhiteThemaThunk} from '../store/app.thunks';
 
 function SettingScreen() {
   const {t} = useTranslation();
@@ -29,14 +30,6 @@ function SettingScreen() {
     }
   };
 
-  const setBackText = () => {
-    if (theme === ThemeType.LIGHT) {
-      return styles.textStyle;
-    } else {
-      return styles.textStyleDark;
-    }
-  };
-
   return (
     <View style={setBackColor()}>
       <Selector />
@@ -45,15 +38,13 @@ function SettingScreen() {
         <RadioButtonRN
           data={data}
           selectedBtn={e => {
-            console.log(e.label);
-
             if (e.id === 1) {
               setTheme(ThemeType.LIGHT);
-
+              setIsWhiteThemaThunk(true);
               //set Redux action here
             } else {
               setTheme(ThemeType.DARK);
-
+              setIsWhiteThemaThunk(false);
               //set Redux action here
             }
           }}
