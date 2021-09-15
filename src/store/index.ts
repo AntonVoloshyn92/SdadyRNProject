@@ -1,7 +1,7 @@
 import {applyMiddleware, combineReducers, createStore, Middleware} from 'redux';
 import thunk, {ThunkMiddleware} from 'redux-thunk';
-import appReducer from './app.reducer';
-import {AppActionTypes} from './app.types';
+import appReducer from './app/app.reducer';
+import {AppActionTypes} from './app/app.types';
 
 const rootReducer = combineReducers({
   app: appReducer,

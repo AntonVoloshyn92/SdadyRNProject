@@ -1,15 +1,21 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
 import RadioButtonRN from 'radio-buttons-react-native';
 import Selector from '../components/LanguageSelector';
 import {useTranslation} from 'react-i18next';
 import {Text} from 'react-native-elements';
 import {ThemeType} from '../constants/enums/ThemeType';
-import {setIsWhiteThemaThunk} from '../store/app.thunks';
+import {isWhiteThemeSelector} from '../store/app/app.selector';
+import {useDispatch, connect} from 'react-redux';
+import {RootState} from '../store';
+import {setIsWhiteThemaThunk} from '../store/app/app.thunks';
 
-function SettingScreen() {
+const SettingScreen: React.FC<ReturnType<typeof mapStateToProps>> = ({
+  isWhiteTheme,
+}) => {
   const {t} = useTranslation();
-  const [theme, setTheme] = useState<ThemeType>();
+
+  const dispatch = useDispatch();
 
   const data = [
     {
@@ -22,29 +28,19 @@ function SettingScreen() {
     },
   ];
 
-  const setBackColor = () => {
-    if (theme === ThemeType.LIGHT) {
-      return styles.main;
-    } else {
-      return styles.mainDark;
-    }
-  };
-
   return (
-    <View style={setBackColor()}>
+    <View style={isWhiteTheme ? styles.main : styles.mainDark}>
       <Selector />
       <View style={styles.container}>
         <Text style={styles.textStyle}>{t('common:themeSelector')}</Text>
         <RadioButtonRN
           data={data}
-          selectedBtn={e => {
+          selectedBtn={(e: {id: number}) => {
             if (e.id === 1) {
-              setTheme(ThemeType.LIGHT);
-              setIsWhiteThemaThunk(true);
+              dispatch(setIsWhiteThemaThunk(true));
               //set Redux action here
             } else {
-              setTheme(ThemeType.DARK);
-              setIsWhiteThemaThunk(false);
+              dispatch(setIsWhiteThemaThunk(false));
               //set Redux action here
             }
           }}
@@ -52,7 +48,13 @@ function SettingScreen() {
       </View>
     </View>
   );
-}
+};
+
+const mapStateToProps = (state: RootState) => ({
+  isWhiteTheme: isWhiteThemeSelector(state),
+});
+
+export default connect(mapStateToProps)(SettingScreen);
 
 const styles = StyleSheet.create({
   main: {
@@ -83,5 +85,3 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 });
-
-export default SettingScreen;
