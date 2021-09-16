@@ -27,10 +27,6 @@ const NewsScreen: React.FC<
 
   const query = 'https://newsapi.org/v2/top-headlines';
 
-  console.log('====================================');
-  console.log(isWhiteTheme);
-  console.log('====================================');
-
   useEffect(() => {
     fetchNewsCallback(query);
   }, [fetchNewsCallback, query]);

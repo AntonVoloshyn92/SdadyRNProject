@@ -3,6 +3,7 @@ import React from 'react';
 import {useCallback} from 'react';
 import {Alert} from 'react-native';
 import {View, Text, StyleSheet, Linking, Button} from 'react-native';
+import {Image} from 'react-native-elements';
 import {NewsStackParamList} from '../navigation/navigation.types';
 
 function NewsDetailsScreen() {
@@ -12,14 +13,14 @@ function NewsDetailsScreen() {
   return (
     <View style={styles.mainContainer}>
       <Text style={styles.textTitle}>{article.title}</Text>
-      <Text>{article.author}</Text>
+      <Image style={styles.image} source={{uri: article.urlToImage}} />
       <Text style={styles.textNews}>{article.content}</Text>
       <OpenURLButton url={article.url}>Open News Source URL</OpenURLButton>
     </View>
   );
 }
 
-const OpenURLButton = ({url, children}) => {
+const OpenURLButton = ({url, children}: string | any) => {
   const handlePress = useCallback(async () => {
     const supported = await Linking.canOpenURL(url);
 
@@ -36,25 +37,27 @@ const OpenURLButton = ({url, children}) => {
 const styles = StyleSheet.create({
   mainContainer: {
     justifyContent: 'center',
-    alignItems: 'center',
     padding: 20,
+    backgroundColor: '#fff',
   },
   textTitle: {
+    textAlign: 'center',
     fontSize: 20,
+    marginStart: 10,
     fontWeight: 'bold',
     paddingTop: 20,
-  },
-  textAutor: {
-    fontSize: 10,
-    marginHorizontal: 10,
+    padding: 10,
   },
   textNews: {
-    fontSize: 14,
+    textAlign: 'center',
+    padding: 10,
+    fontSize: 16,
     paddingTop: 20,
   },
   image: {
-    padding: 20,
-    width: 200,
+    alignItems: 'center',
+    borderRadius: 20,
+    marginTop: 15,
     height: 200,
   },
 });

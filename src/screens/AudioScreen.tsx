@@ -49,9 +49,9 @@ export default function AudioScreen() {
   const songSlider = useRef(null);
   const [repeatMode, setRepeatMode] = useState('off');
 
-  const [trackArtwork, setTrackArtwork] = useState();
-  const [trackArtist, setTrackArtist] = useState();
-  const [trackTitle, setTrackTitle] = useState();
+  const [trackArtwork, setTrackArtwork] = useState<any>();
+  const [trackArtist, setTrackArtist] = useState<string>();
+  const [trackTitle, setTrackTitle] = useState<string>();
 
   useTrackPlayerEvents([Event.PlaybackTrackChanged], async event => {
     if (event.type === Event.PlaybackTrackChanged && event.nextTrack != null) {
@@ -121,8 +121,7 @@ export default function AudioScreen() {
 
   const renderSongs = () => {
     return (
-      <Animated.View
-        style={{width: width, justifyContent: 'center', alignItems: 'center'}}>
+      <Animated.View style={styles.animatedView}>
         <View style={styles.artworkWrapper}>
           <Image source={trackArtwork} style={styles.artworkImage} />
         </View>
@@ -186,13 +185,13 @@ export default function AudioScreen() {
               name="play-skip-back-outline"
               size={35}
               color="#FFD369"
-              style={{marginTop: 25}}
+              style={styles.matginTop25}
             />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => togglePlayback(playbackState)}>
             <Ionicons
               name={
-                playbackState == State.Playing
+                playbackState === State.Playing
                   ? 'ios-pause-circle'
                   : 'ios-play-circle'
               }
@@ -205,7 +204,7 @@ export default function AudioScreen() {
               name="play-skip-forward-outline"
               size={35}
               color="#FFD369"
-              style={{marginTop: 25}}
+              style={styles.matginTop25}
             />
           </TouchableOpacity>
         </View>
@@ -314,6 +313,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '60%',
     marginTop: 15,
+  },
+  animatedView: {
+    width: width,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  matginTop25: {
+    marginTop: 25,
   },
 });
 
