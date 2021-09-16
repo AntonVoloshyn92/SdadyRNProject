@@ -1,6 +1,7 @@
 import {RouteProp, useRoute} from '@react-navigation/native';
 import React from 'react';
 import {useCallback} from 'react';
+import {useTranslation} from 'react-i18next';
 import {Alert} from 'react-native';
 import {View, Text, StyleSheet, Linking, Button} from 'react-native';
 import {Image} from 'react-native-elements';
@@ -9,13 +10,14 @@ import {NewsStackParamList} from '../navigation/navigation.types';
 function NewsDetailsScreen() {
   const route = useRoute<RouteProp<NewsStackParamList, 'NewsDetailsScreen'>>();
   const {article} = route.params;
+  const {t} = useTranslation();
 
   return (
     <View style={styles.mainContainer}>
       <Text style={styles.textTitle}>{article.title}</Text>
       <Image style={styles.image} source={{uri: article.urlToImage}} />
       <Text style={styles.textNews}>{article.content}</Text>
-      <OpenURLButton url={article.url}>Open News Source URL</OpenURLButton>
+      <OpenURLButton url={article.url}>{t('common:sourceUrl')}</OpenURLButton>
     </View>
   );
 }
@@ -36,6 +38,7 @@ const OpenURLButton = ({url, children}: string | any) => {
 
 const styles = StyleSheet.create({
   mainContainer: {
+    flex: 1,
     justifyContent: 'center',
     padding: 20,
     backgroundColor: '#fff',

@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   autor: {
+    fontStyle: 'italic',
     marginBottom: height * 0.0,
     marginHorizontal: width * 0.05,
     fontSize: 15,

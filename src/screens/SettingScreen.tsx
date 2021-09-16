@@ -33,6 +33,7 @@ const SettingScreen: React.FC<ReturnType<typeof mapStateToProps>> = ({
       <View style={styles.container}>
         <Text style={styles.textStyle}>{t('common:themeSelector')}</Text>
         <RadioButtonRN
+          initial={isWhiteTheme ? 1 : 2}
           data={data}
           selectedBtn={(e: {id: number}) => {
             if (e.id === 1) {

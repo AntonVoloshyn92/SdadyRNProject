@@ -18,6 +18,7 @@ export const en = {
     themeLight: 'Light',
     themeDark: 'Dark',
     themeSelector: 'Install theme',
+    sourceUrl: 'Open News Source',
   },
 };
 
@@ -39,6 +40,7 @@ export const ua = {
     themeLight: 'Світла',
     themeDark: 'Темна',
     themeSelector: 'Встановити тему',
+    sourceUrl: 'Відкрити Джерело Новин',
   },
 };
 
@@ -60,5 +62,6 @@ export const rus = {
     themeLight: 'Cветлая',
     themeDark: 'Темная',
     themeSelector: 'Установить тему',
+    sourceUrl: 'Открыть Источник Новостей',
   },
 };

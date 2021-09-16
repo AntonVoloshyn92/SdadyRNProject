@@ -21,7 +21,7 @@ const NewsScreen: React.FC<
     useNavigation<StackNavigationProp<NewsStackParamList, 'NewsScreen'>>();
 
   const fetchNewsCallback = useCallback(async (queryString: string) => {
-    const response = await NewsService.getNewsDate('us', 'business');
+    const response = await NewsService.getNewsDate('ua', 'business');
     setNews(response);
   }, []);
 
