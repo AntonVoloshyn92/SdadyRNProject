@@ -1,4 +1,5 @@
-import {Articles} from '../interfaces/NewsInterface';
+import {Articles} from '../interfaces/axiosIntarface/NewsInterface';
+import {Items} from '../interfaces/axiosIntarface/YouTubeInterface';
 
 /**
  * NEWS
@@ -6,4 +7,12 @@ import {Articles} from '../interfaces/NewsInterface';
 export type NewsStackParamList = {
   NewsScreen: undefined;
   NewsDetailsScreen: {article: Articles};
+};
+
+/**
+ * VIDEO
+ */
+export type VideStackParamList = {
+  VideoScreen: undefined;
+  WacthVideoScreen: {item: Items};
 };

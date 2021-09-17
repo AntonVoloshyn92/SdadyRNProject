@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useCallback} from 'react';
-import {View, FlatList, Alert, StyleSheet} from 'react-native';
+import {View, FlatList, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import VideoCard from '../components/VideoCard';
 import {VideoCardProps} from '../interfaces/props/VideoCardProps';
@@ -7,13 +7,17 @@ import {Items} from '../interfaces/axiosIntarface/YouTubeInterface';
 import YouTubeService from '../services/YouTubeService';
 import {RootState} from '../store';
 import {isWhiteThemeSelector} from '../store/app/app.selector';
-
-const globalStyles = require('../style/style');
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {VideStackParamList} from '../navigation/navigation.types';
 
 const VideoScreen: React.FC<
   VideoCardProps & ReturnType<typeof mapStateToProps>
 > = ({isWhiteTheme}) => {
   const [video, setVideo] = useState<Items[]>([]);
+
+  const navigation =
+    useNavigation<StackNavigationProp<VideStackParamList, 'VideoScreen'>>();
 
   const fecthYouTubeCallBack = useCallback(async (queryString: string) => {
     const response = await YouTubeService.getVideoListDate(
@@ -40,8 +44,9 @@ const VideoScreen: React.FC<
             <VideoCard
               item={item}
               onClick={() => {
-                Alert.alert(item.snippet.title);
-                //todo navigation to video player
+                navigation.navigate('WacthVideoScreen', {
+                  item: item,
+                });
               }}
             />
           );

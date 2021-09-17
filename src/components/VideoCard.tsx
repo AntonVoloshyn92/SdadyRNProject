@@ -5,10 +5,9 @@ import {
   StyleSheet,
   Image,
   Dimensions,
-  Alert,
   TouchableOpacity,
 } from 'react-native';
-import {VideoCardProps} from '../interfaces/VideoCardProps';
+import {VideoCardProps} from '../interfaces/props/VideoCardProps';
 
 const {width, height} = Dimensions.get('screen');
 

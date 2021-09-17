@@ -1,4 +1,4 @@
-import {Articles} from './NewsInterface';
+import {Articles} from '../axiosIntarface/NewsInterface';
 
 export interface NewsCardProps {
   article: Articles;

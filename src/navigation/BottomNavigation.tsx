@@ -4,9 +4,9 @@ import ModalScreen from '../screens/ModalScreen';
 import AudioScreen from '../screens/AudioScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import StackNavigationNews from './NavigationNews';
+import StackVideoNavigation from './NavigatioVideo';
 import SettingScreen from '../screens/SettingScreen';
 import {useTranslation} from 'react-i18next';
-import VideoScreen from '../screens/VideoScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -52,8 +52,9 @@ export default function BottomNavigation() {
       />
       <Tab.Screen
         name="Video"
-        component={VideoScreen}
+        children={StackVideoNavigation}
         options={{
+          headerShown: false,
           tabBarLabel: t('navigation:video'),
           tabBarIcon: ({color, size}) => (
             <Ionicons name="ios-videocam" color={color} size={size} />
