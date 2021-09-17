@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import {View, FlatList, StyleSheet} from 'react-native';
-import {Articles} from '../interfaces/NewsInterface';
+import {Articles} from '../interfaces/axiosIntarface/NewsInterface';
 import NewsCard from '../components/NewsCard';
 import NewsService from '../services/NewsService';
 import {useNavigation} from '@react-navigation/native';

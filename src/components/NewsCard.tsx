@@ -7,7 +7,7 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import {NewsCardProps} from '../interfaces/NewsCardProps';
+import {NewsCardProps} from '../interfaces/props/NewsCardProps';
 
 const {width, height} = Dimensions.get('window');
 

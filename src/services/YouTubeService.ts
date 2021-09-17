@@ -1,14 +1,12 @@
 import {AxiosInstance} from 'axios';
-import {axiosYouTubeInstance} from '../interfaces/AxiosInterface';
-import {YouTubeResponce} from '../interfaces/YouTubeInterface';
+import {axiosYouTubeInstance} from '../interfaces/axiosIntarface/AxiosInterface';
+import {YouTubeResponce} from '../interfaces/axiosIntarface/YouTubeInterface';
 
 class YouTubeService {
   constructor(
     private readonly YOUTUBE_API: string,
     private readonly axios: AxiosInstance,
   ) {}
-
-  //https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=songs&type=video&key=AIzaSyBWaen7Bi6bhBnTqdmLG4PkqcfexEjk2uU youtube url
 
   public async getVideoListDate(
     snippet: string,

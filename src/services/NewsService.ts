@@ -1,6 +1,6 @@
 import {AxiosInstance} from 'axios';
-import {axiosNewsInstance} from '../interfaces/AxiosInterface';
-import {NewsItem} from '../interfaces/NewsInterface';
+import {axiosNewsInstance} from '../interfaces/axiosIntarface/AxiosInterface';
+import {NewsItem} from '../interfaces/axiosIntarface/NewsInterface';
 
 class NewsService {
   constructor(
