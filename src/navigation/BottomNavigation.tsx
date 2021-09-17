@@ -6,6 +6,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import StackNavigationNews from './NavigationNews';
 import SettingScreen from '../screens/SettingScreen';
 import {useTranslation} from 'react-i18next';
+import VideoScreen from '../screens/VideoScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -46,6 +47,16 @@ export default function BottomNavigation() {
           tabBarLabel: t('navigation:music'),
           tabBarIcon: ({color, size}) => (
             <Ionicons name="ios-musical-notes" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Video"
+        component={VideoScreen}
+        options={{
+          tabBarLabel: t('navigation:video'),
+          tabBarIcon: ({color, size}) => (
+            <Ionicons name="ios-videocam" color={color} size={size} />
           ),
         }}
       />

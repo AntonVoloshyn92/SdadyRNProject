@@ -1,6 +1,6 @@
-import axios, {AxiosInstance} from 'axios';
-import {axiosInstance} from '../interfaces/AxiosInterface';
-import {Articles, NewsItem} from '../interfaces/NewsInterface';
+import {AxiosInstance} from 'axios';
+import {axiosNewsInstance} from '../interfaces/AxiosInterface';
+import {NewsItem} from '../interfaces/NewsInterface';
 
 class NewsService {
   constructor(
@@ -24,5 +24,5 @@ class NewsService {
 
 export default new NewsService(
   'https://newsapi.org/v2/top-headlines',
-  axiosInstance,
+  axiosNewsInstance,
 );

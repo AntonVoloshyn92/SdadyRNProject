@@ -6,6 +6,7 @@ export const en = {
     modal: 'Modal',
     music: 'Music',
     setting: 'Settings',
+    video: 'Video',
   },
   [namespaces.common]: {
     question: 'You are handsome?',
@@ -28,6 +29,7 @@ export const ua = {
     modal: 'Модальний',
     music: 'Музика',
     setting: 'Налаштування',
+    video: 'Відео',
   },
   [namespaces.common]: {
     question: 'Ти гарний?',
@@ -50,6 +52,7 @@ export const rus = {
     modal: 'Модальный',
     music: 'Музыка',
     setting: 'Настройка',
+    video: 'Видео',
   },
   [namespaces.common]: {
     question: 'Ты красив?',

@@ -152,7 +152,6 @@ export default function AudioScreen() {
             {useNativeDriver: true},
           )}
         />
-
         <View>
           <Text style={styles.songTitle}>{trackTitle}</Text>
           <Text style={styles.songArtist}>{trackArtist}</Text>
