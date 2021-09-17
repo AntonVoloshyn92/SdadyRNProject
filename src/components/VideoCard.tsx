@@ -1,39 +1,39 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, Dimensions, Alert} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Dimensions,
+  Alert,
+  TouchableOpacity,
+} from 'react-native';
+import {VideoCardProps} from '../interfaces/VideoCardProps';
 
-const {width, height} = Dimensions.get('window');
+const {width, height} = Dimensions.get('screen');
 
-const VideoCard: React.FC<any> = () => {
+const VideoCard: React.FC<VideoCardProps> = ({item, onClick}) => {
   return (
-    <View style={styles.main}>
-      <View style={styles.mainContainer}>
+    <TouchableOpacity
+      onPress={() => {
+        onClick(item);
+      }}>
+      <View style={styles.cardView}>
         <Image
           style={styles.image}
-          source={require('../assets/image/woman.jpg')}
+          source={{uri: item.snippet.thumbnails.medium.url}}
         />
-        <View>
-          <Text
-            onPress={() => {
-              Alert.alert('Hello');
-            }}>
-            Video Title
-          </Text>
-        </View>
+        <Text style={styles.title}>{item.snippet.title}</Text>
+        <Text style={styles.channelTitle}>{item.snippet.channelTitle}</Text>
+        <Text style={styles.publishTime}>{item.snippet.publishTime}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  videoTextContainer: {},
-  main: {
-    backgroundColor: 'lightgrey',
-    width: width * 0.9,
-    height: 200,
+  cardView: {
+    backgroundColor: 'white',
     margin: width * 0.03,
     borderRadius: width * 0.05,
     shadowColor: '#000',
@@ -41,11 +41,32 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 3,
   },
+  title: {
+    marginHorizontal: width * 0.05,
+    marginVertical: width * 0.03,
+    color: 'black',
+    fontSize: 15,
+    fontWeight: 'bold',
+  },
+  publishTime: {
+    marginHorizontal: width * 0.02,
+    marginVertical: width * 0.05,
+    color: 'gray',
+    fontSize: 12,
+  },
   image: {
-    padding: 50,
-    borderRadius: 20,
-    width: 150,
-    height: 100,
+    height: height / 6,
+    marginLeft: width * 0.05,
+    marginRight: width * 0.05,
+    marginVertical: height * 0.02,
+    borderRadius: 10,
+  },
+  channelTitle: {
+    fontStyle: 'italic',
+    marginBottom: height * 0.0,
+    marginHorizontal: width * 0.05,
+    fontSize: 12,
+    color: 'gray',
   },
 });
 

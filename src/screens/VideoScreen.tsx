@@ -1,18 +1,18 @@
 import React, {useEffect, useState, useCallback} from 'react';
-import {View, TouchableOpacity, Alert} from 'react-native';
+import {View, FlatList, Alert, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import VideoCard from '../components/VideoCard';
+import {VideoCardProps} from '../interfaces/VideoCardProps';
 import {Items} from '../interfaces/YouTubeInterface';
 import YouTubeService from '../services/YouTubeService';
 import {RootState} from '../store';
 import {isWhiteThemeSelector} from '../store/app/app.selector';
-//https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=songs&type=video&key=AIzaSyBWaen7Bi6bhBnTqdmLG4PkqcfexEjk2uU youtube url
 
 const globalStyles = require('../style/style');
 
-const VideoScreen: React.FC<ReturnType<typeof mapStateToProps>> = ({
-  isWhiteTheme,
-}) => {
+const VideoScreen: React.FC<
+  VideoCardProps & ReturnType<typeof mapStateToProps>
+> = ({isWhiteTheme}) => {
   const [video, setVideo] = useState<Items[]>([]);
 
   const fecthYouTubeCallBack = useCallback(async (queryString: string) => {
@@ -21,9 +21,6 @@ const VideoScreen: React.FC<ReturnType<typeof mapStateToProps>> = ({
       20,
       'video',
     );
-    console.log('====================================');
-    console.log(response);
-    console.log('====================================');
     setVideo(response);
   }, []);
 
@@ -35,22 +32,43 @@ const VideoScreen: React.FC<ReturnType<typeof mapStateToProps>> = ({
 
   return (
     <View
-      style={[
-        globalStyles.workSpace,
-        isWhiteTheme ? globalStyles.main : globalStyles.mainDark,
-      ]}>
-      <TouchableOpacity
-        onPress={() => {
-          Alert.alert('Alarm');
-        }}>
-        <VideoCard />
-      </TouchableOpacity>
+      style={[styles.workSpace, isWhiteTheme ? styles.main : styles.mainDark]}>
+      <FlatList
+        data={video}
+        renderItem={({item}) => {
+          return (
+            <VideoCard
+              item={item}
+              onClick={() => {
+                Alert.alert(item.snippet.title);
+                //todo navigation to video player
+              }}
+            />
+          );
+        }}
+      />
     </View>
   );
 };
 
 const mapStateToProps = (state: RootState) => ({
   isWhiteTheme: isWhiteThemeSelector(state),
+});
+
+const styles = StyleSheet.create({
+  workSpace: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  main: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  mainDark: {
+    flex: 1,
+    backgroundColor: '#6e798a',
+  },
 });
 
 export default connect(mapStateToProps)(VideoScreen);
