@@ -7,7 +7,7 @@ import {Icon} from 'react-native-elements';
 
 const WacthVideoScreen: React.FC<any> = () => {
   const route = useRoute<RouteProp<VideStackParamList, 'WacthVideoScreen'>>();
-  const {item} = route.params;
+  const {video} = route.params;
 
   const [playing, setPlaying] = useState(false);
   const [isMute, setMute] = useState(false);
@@ -46,7 +46,7 @@ const WacthVideoScreen: React.FC<any> = () => {
         ref={controlRef}
         play={playing}
         mute={isMute}
-        videoId={item.id.videoId}
+        videoId={video.id.videoId}
         onChangeState={onStateChange}
       />
       <View style={styles.controlContainer}>
