@@ -11,20 +11,20 @@ import {VideoCardProps} from '../interfaces/props/VideoCardProps';
 
 const {width, height} = Dimensions.get('screen');
 
-const VideoCard: React.FC<VideoCardProps> = ({item, onClick}) => {
+const VideoCard: React.FC<VideoCardProps> = ({video, onClick}) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        onClick(item);
+        onClick(video);
       }}>
       <View style={styles.cardView}>
         <Image
           style={styles.image}
-          source={{uri: item.snippet.thumbnails.medium.url}}
+          source={{uri: video.snippet.thumbnails.medium.url}}
         />
-        <Text style={styles.title}>{item.snippet.title}</Text>
-        <Text style={styles.channelTitle}>{item.snippet.channelTitle}</Text>
-        <Text style={styles.publishTime}>{item.snippet.publishTime}</Text>
+        <Text style={styles.title}>{video.snippet.title}</Text>
+        <Text style={styles.channelTitle}>{video.snippet.channelTitle}</Text>
+        <Text style={styles.publishTime}>{video.snippet.publishTime}</Text>
       </View>
     </TouchableOpacity>
   );

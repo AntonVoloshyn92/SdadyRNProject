@@ -4,6 +4,7 @@ import {useTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
 import {RootState} from '../store';
 import {isWhiteThemeSelector} from '../store/app/app.selector';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 const ModalScreen: React.FC<ReturnType<typeof mapStateToProps>> = ({
   isWhiteTheme,
@@ -22,6 +23,8 @@ const ModalScreen: React.FC<ReturnType<typeof mapStateToProps>> = ({
               <Button
                 title={t('common:yes')}
                 onPress={() => {
+                  crashlytics().crash();
+                  crashlytics().log('common:yes.');
                   Alert.alert(t('common:congratulations'));
                   setModalVisible(!modalVisible);
                 }}

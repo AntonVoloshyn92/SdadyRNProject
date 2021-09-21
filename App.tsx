@@ -8,7 +8,7 @@ import remoteConfig from '@react-native-firebase/remote-config';
 
 const App = () => {
   remoteConfig()
-    .fetch(0)
+    .fetch()
     .then(() => {
       return remoteConfig().activate();
     });

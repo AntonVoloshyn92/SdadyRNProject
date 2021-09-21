@@ -1,6 +1,6 @@
 import {Items} from '../axiosIntarface/YouTubeInterface';
 
 export interface VideoCardProps {
-  item: Items;
+  video: Items;
   onClick: (itemLink: Items) => void;
 }

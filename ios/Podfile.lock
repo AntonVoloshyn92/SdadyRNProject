@@ -12,6 +12,9 @@ PODS:
     - ReactCommon/turbomodule/core (= 0.65.1)
   - Firebase/CoreOnly (8.7.0):
     - FirebaseCore (= 8.7.0)
+  - Firebase/Crashlytics (8.7.0):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 8.7.0)
   - Firebase/RemoteConfig (8.7.0):
     - Firebase/CoreOnly
     - FirebaseRemoteConfig (~> 8.7.0)
@@ -26,6 +29,13 @@ PODS:
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/Logger (~> 7.4)
     - nanopb (~> 2.30908.0)
+  - FirebaseCrashlytics (8.7.0):
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleDataTransport (~> 9.0)
+    - GoogleUtilities/Environment (~> 7.4)
+    - nanopb (~> 2.30908.0)
+    - PromisesObjC (< 3.0, >= 1.2)
   - FirebaseInstallations (8.7.0):
     - FirebaseCore (~> 8.0)
     - GoogleUtilities/Environment (~> 7.4)
@@ -399,6 +409,10 @@ PODS:
   - RNFBApp (12.8.0):
     - Firebase/CoreOnly (= 8.7.0)
     - React-Core
+  - RNFBCrashlytics (12.8.0):
+    - Firebase/Crashlytics (= 8.7.0)
+    - React-Core
+    - RNFBApp
   - RNFBRemoteConfig (12.8.0):
     - Firebase/RemoteConfig (= 8.7.0)
     - React-Core
@@ -475,6 +489,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCMaskedView (from `../node_modules/@react-native-masked-view/masked-view`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
+  - "RNFBCrashlytics (from `../node_modules/@react-native-firebase/crashlytics`)"
   - "RNFBRemoteConfig (from `../node_modules/@react-native-firebase/remote-config`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNScreens (from `../node_modules/react-native-screens`)
@@ -489,6 +504,7 @@ SPEC REPOS:
     - FirebaseABTesting
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseCrashlytics
     - FirebaseInstallations
     - FirebaseRemoteConfig
     - Flipper
@@ -582,6 +598,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-masked-view/masked-view"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
+  RNFBCrashlytics:
+    :path: "../node_modules/@react-native-firebase/crashlytics"
   RNFBRemoteConfig:
     :path: "../node_modules/@react-native-firebase/remote-config"
   RNGestureHandler:
@@ -603,6 +621,7 @@ SPEC CHECKSUMS:
   FirebaseABTesting: 5a72ea0e88422f9e223614cb4016cafffb2af8d1
   FirebaseCore: f4804c1d3f4bbbefc88904d15653038f2c99ddf7
   FirebaseCoreDiagnostics: b63732f581a1c6a453ec7241f9ab60b3a5bd3450
+  FirebaseCrashlytics: 6fac03d1eef054833b71c929c93ab95c12989728
   FirebaseInstallations: ede6fb72bb6337914e5888b399271259d0c4910c
   FirebaseRemoteConfig: 34300dd83055c06e2768d0932dd8fb2c1575745f
   Flipper: b1fddf9a17c32097b2b4c806ad158b2f36bb2692
@@ -653,6 +672,7 @@ SPEC CHECKSUMS:
   ReactCommon: eafed38eec7b591c31751bfa7494801618460459
   RNCMaskedView: d367b2a8df3992114e31b32b091a0c00dc800827
   RNFBApp: b97d6654509a5852d49f0abf93be76b300fd2e2c
+  RNFBCrashlytics: ec6152821499cc74aa5fba9f5016591a817c8451
   RNFBRemoteConfig: 91c2b3dfb52d14bd7ab01db7baac21d2b6c5bb1e
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNScreens: eb0dfb2d6b21d2d7f980ad46b14eb306d2f1062e

@@ -14,5 +14,5 @@ export type NewsStackParamList = {
  */
 export type VideStackParamList = {
   VideoScreen: undefined;
-  WacthVideoScreen: {item: Items};
+  WacthVideoScreen: {video: Items};
 };

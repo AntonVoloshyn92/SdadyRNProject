@@ -20,32 +20,33 @@ const VideoScreen: React.FC<
     useNavigation<StackNavigationProp<VideStackParamList, 'VideoScreen'>>();
 
   const fecthYouTubeCallBack = useCallback(async (queryString: string) => {
-    const response = await YouTubeService.getVideoListDate(
+    const responseVideo = await YouTubeService.getVideoListDate(
       'snippet',
       20,
       'video',
     );
-    setVideo(response);
+    setVideo(responseVideo);
   }, []);
 
-  const query = 'https://www.googleapis.com/youtube/v3/search';
+  const queryVideo = 'https://www.googleapis.com/youtube/v3/search';
 
   useEffect(() => {
-    fecthYouTubeCallBack(query);
-  }, [fecthYouTubeCallBack, query]);
+    fecthYouTubeCallBack(queryVideo);
+  }, [fecthYouTubeCallBack, queryVideo]);
 
   return (
     <View
       style={[styles.workSpace, isWhiteTheme ? styles.main : styles.mainDark]}>
       <FlatList
         data={video}
+        keyExtractor={item => item.id.videoId}
         renderItem={({item}) => {
           return (
             <VideoCard
-              item={item}
+              video={item}
               onClick={() => {
                 navigation.navigate('WacthVideoScreen', {
-                  item: item,
+                  video: item,
                 });
               }}
             />
