@@ -8,15 +8,10 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {NewsCardProps} from '../interfaces/props/NewsCardProps';
-import crashlytics from '@react-native-firebase/crashlytics';
 
 const {width, height} = Dimensions.get('window');
 
 const NewsCard: React.FC<NewsCardProps> = ({article, onClick}) => {
-  console.log('====================================');
-  console.log('NewsCard');
-  console.log('====================================');
-  crashlytics().crash();
   return (
     <TouchableOpacity
       onPress={() => {
