@@ -12,7 +12,7 @@ function StackNavigationNews() {
   return (
     <Stack.Navigator initialRouteName="News">
       <Stack.Screen
-        name="News"
+        name="NewsScreen"
         options={{
           title: t('navigation:news'),
         }}
